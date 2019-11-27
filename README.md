@@ -72,7 +72,7 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 * Speed Challenge
 	* tot component - /tot-tasks/tots/<tot_id> --> GET
-	* task component - ('/tot-tasks/tasks/new') --> POST
+	* task component - ('/tot-tasks/tasks') --> POST
 	* submit component - /tot-tasks/tots/<tot_id>/<task_id>' --> POST
 
 
