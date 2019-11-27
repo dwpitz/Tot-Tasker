@@ -32,7 +32,7 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 	* Full Name - String
 	* Password - String
 	* ID - Int
-	* Tots Relation - String
+	* Tots Relation - Array
 	
 * Tots
 	* Name - String
@@ -59,15 +59,15 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 	* login route - ('/users/login') --> POST
 	* logout route - ('/users/logout') --> GET
 
-* Main Site Routes/
-	* main site route - ('/index') --> GET
+* Main Dashboard Routes
+	* main site route - ('/') --> GET
 	* tot component - lists all tots & their active tasks - ('/tots') --> GET
 	* scoreboard - ('/tots/<tot_id>') - GET
 	* + / - scoring component - '/tots/<tot_id>/<task_id>' --> POST
 
 * Task Adder
-	* create task route - ('/tasks/new') --> POST
-    * update/edit task route - ('/tasks/<task_id>') --> PUT 
+	* create task route - ('/tasks') --> POST
+    * edit task route - ('/tasks/<task_id>') --> PUT 
     * delete task route - ('/tasks/<task_id>') --> Delete
 
 * Speed Challenge
