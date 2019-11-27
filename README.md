@@ -20,8 +20,6 @@
 	* View Their Progress Through Incomplete Task Goals
 	* See the family scoreboard for all competing children in the family.  
 
-* ---------------------------MVP-------------------------------------
-
 * ----------------------STRETCH GOALS--------------------------------
 * Share messages and inside information with other Parents/Admins in the family's account.	
 * Befriend admins from other families for messaging, sharing tips, and offering support.
@@ -36,9 +34,12 @@
 	* Name
 	* Image
 	* Tasks
+	* ID
 
 * Tasks
 	* Type
+	* Tot ID
+	* Progress
 
 * Rewards
 	* Type
@@ -49,8 +50,13 @@
 	* login route -> ('/tot-tasks/login') --> POST
 	* logout route -> ('/tot-tasks/logout') --> GET
 
-* Main Site Routes/Tasks/Speed Challenge Routes
+* Main Site Routes/
 	* main site route -> ('/tot-tasks/') --> GET
+	* tot component -> 
+
+* Task Adder
 	* create task route -> ('/tasks/new') --> POST
-    * update/edit task route -> ('/tasks/<id>') --> PUT 
-    * delete task route -> ('/tasks/<id>') --> Delete
+    * update/edit task route -> ('/tasks/<task_id>') --> PUT 
+    * delete task route -> ('/tasks/<task_id>') --> Delete
+
+
