@@ -27,58 +27,80 @@
 https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 ## MODELS/SCHEMAS 
-* Users
-	* User Name - String
-	* Full Name - String
-	* Password - String
-	* ID - Int
-	* Tots Relation - Array
-	
-* Tots
-	* Name - String
-	* Image - Img link
-	* ID - Int
-	* Tasks Relation - Array
-	
-* Tasks
-	* Type - String
-	* Progress - Int?
-	* Rewards - String
-	* Complete - Boolean
-	* ID
+
+Family {
+	users: [User ID - ref],
+	tots: [Tot.schema],
+	taskNames: [String],
+	rewards: [String],
+	assignedTasks: [task.schema], // show on scoreboard
+	taskArchive: [task.schema], // historical
+	speedChallenges: [speedChallenge.schema]
+}
+
+Users {
+	userId: int,
+	userName: [String], 
+	fullName: [String],
+	password: [String],
+}
+
+Tots {
+	name: [String],
+	image: img,
+	totID: int
+}
+
+Task {
+	tots: tot (From above),
+	reward: reward (From above),
+	times til reward: int,
+	times so far: int,
+	date
+	taskID: 
+}
+
+SpeedChallenge {
+	task: task (From above),
+	time: 
+	taskToBump: (id)
+	howMuch: 
+}
 
 * Speed Challenge
-	* Tot Relation - ID
-	* Task - String
-	* Score - Integer
-	* Timer
 
 ## ROUTES - CRUDing 
-* Register/Login Routes
-	* register route - ('/users/register') --> POST
-	* login route - ('/users/login') --> POST
-	* logout route - ('/users/logout') --> GET
+* Register/Login Routes - Users
+	* register route - ('/user/register') --> POST
+	* login route - ('/user/login') --> POST
+	* logout route - ('/user/logout') --> GET
+	* tots post route? - ('/user/<userId>/tots') --> POST
 
-* Main Dashboard Routes
-	* main site route - ('/') --> GET
-	* tot component - lists all tots & their active tasks - ('/tots') --> GET
+* Main Dashboard Components/Routes
+	* main dashboard route - ('/user/<userId>') --> GET
+	* tot component - lists all tots & their active tasks - ('/user/<userID>/tots/tasks') --> GET
+	* tot edit component - Let's user add or subtract from task progress.  Let's 
+		user update tasks - ('/user/<userId>/tots/tasks/<taskID>/edit')
 	* scoreboard - ('/tots/<tot_id>') - GET
-	* + / - scoring component - '/tots/<tot_id>/<task_id>' --> POST
+	* + / - scoring component - ('/tots/<totID>/<taskID>') --> GET
+	* Speed Challenge - See below...
 
-* Task Adder
-	* create task route - ('/tasks') --> POST
+* Task Adder/Editer
+	* assign tots route - ('/user/<userId>/tots') --> GET
+	* add task route - ('/tasks') --> POST
     * edit task route - ('/tasks/<task_id>') --> PUT 
     * delete task route - ('/tasks/<task_id>') --> Delete
 
 * Speed Challenge
-	* tot component - /tots/<tot_id> --> GET
+	* speed challenge dashboard - ('/user/<userId>/tots/<totID>') --> GET
+	* assign tots route - ('/user/<userId>/tots') --> GET
 	* task component - ('/tasks') --> POST
 	* submit component - /tots/<tot_id>/<task_id>' --> POST
 
 
 * Tot Mode
 	* scoreboard (from above) - (/tots/<tot_id>') - GET
-	* tot component (from above) - lists all tots & their active tasks - ('/tots') --> GET
+	* tot component (from above) - lists all tots & their active tasks - ('/user/<userID>/tots/tasks') --> GET
 
 
 
