@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dwpitz/Tot-Tasks.git"
+    "url": "git@github.com:dwpitz/Tot-Tasker.git"
   },
   "author": "David Pitz",
   "license": "ISC",
