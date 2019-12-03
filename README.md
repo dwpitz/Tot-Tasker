@@ -3,7 +3,7 @@
 ## USER STORIES
 * Users will be able to:
 	* Register an account for their family.
-	* Add children and partner(s) (admins) to the site.
+	* Add their tots to the site.
 	* See Tots current tasks/progress towards task goals on the main dashboard.
 	* Assign New Tasks To Tots via the Task Adder
 	* Set the number of instances a Tot must complete said Task to achieve a goal.
@@ -67,10 +67,8 @@ SpeedChallenge {
 	howMuch: 
 }
 
-* Speed Challenge
-
 ## ROUTES - CRUDing 
-* Register/Login Routes - Users
+* Register/Login Components - Users
 	* register route - ('/user/register') --> POST
 	* login route - ('/user/login') --> POST
 	* logout route - ('/user/logout') --> GET
@@ -80,9 +78,9 @@ SpeedChallenge {
 	* main dashboard route - ('/user/<userId>') --> GET
 	* tot component - lists all tots & their active tasks - ('/user/<userID>/tots/tasks') --> GET
 	* tot edit component - Let's user add or subtract from task progress.  Let's 
-		user update tasks - ('/user/<userId>/tots/tasks/<taskID>/edit')
+		user update tasks - ('/user/<userId>/tots/<tot_id>/tasks/<taskID>/edit')
 	* scoreboard - ('/tots/<tot_id>') - GET
-	* + / - scoring component - ('/tots/<totID>/<taskID>') --> GET
+	* + / - scoring component - ('/tots/<totID>/tasks/<taskID>') --> GET
 	* Speed Challenge - See below...
 
 * Task Adder/Editer
