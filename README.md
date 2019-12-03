@@ -3,10 +3,10 @@
 ## USER STORIES
 * Users will be able to:
 	* Register an account for their family.
-	* Add their tots to the site.
+	* Add their tots to the family account.
 	* See Tots current tasks/progress towards task goals on the main dashboard.
 	* Assign New Tasks To Tots via the Task Adder
-	* Set the number of instances a Tot must complete said Task to achieve a goal.
+	* Set the number of times a Tot must complete said Task to achieve a goal.
 	* Set a reward for the Tot upon meeting their goal.
 	* Edit A Task's overall goal or reward. 
 	* Edit Tot's progress or reset the Goal to 0 at the Parent's discretion (i.e. - child forgot to make bed.) if goal was not met.  
@@ -29,77 +29,47 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 ## MODELS/SCHEMAS 
 
 	Family {
-		users: [User ID - ref],
 		tots: [Tot.schema],
-		taskNames: [String],
-		rewards: [String],
-		assignedTasks: [task.schema], // show on scoreboard
+		tasks: [String],
+		completedTasks: [task.schema], // show on scoreboard
 		taskArchive: [task.schema], // historical
-		speedChallenges: [speedChallenge.schema]
-	}
-
-	Users {
-		userId: int,
-		userName: [String], 
-		fullName: [String],
-		password: [String],
+		email: String, 
+		familyName: String,
+		password: String,
+		admin1: String,
+		admin2: String,
+		admin3: String
 	}
 
 	Tots {
 		name: [String],
 		image: img,
-		totID: int
+		tasks: [String]
 	}
 
 	Task {
 		tots: tot (From above),
-		reward: reward (From above),
+		reward: String,
 		times til reward: int,
-		times so far: int,
-		date
-		taskID: 
-	}
-
-	SpeedChallenge {
-		task: task (From above),
-		time: 
-		taskToBump: (id)
-		howMuch: 
+		times so far: int (0 by default),
+		date: Date
 	}
 
 ## ROUTES - CRUDing 
-* Register/Login Components - Users
-	* register route - ('/user/register') --> POST
-	* login route - ('/user/login') --> POST
-	* logout route - ('/user/logout') --> GET
-	* tots post route? - ('/user/<userId>/tots') --> POST
+* Register/Login Components - Users - Change to family...
+	* register route - ('/family/register') --> POST
+	* login route - ('/family/login') --> POST
+	* logout route - ('/family/logout') --> GET
+	* tots post route - ('/family/<family_Id>/tots') --> POST
 
-* Main Dashboard Components/Routes
-	* main dashboard route - ('/user/<userId>') --> GET
-	* tot component - lists all tots & their active tasks - ('/user/<userID>/tots/tasks') --> GET
-	* tot edit component - Let's user add or subtract from task progress.  Let's 
-		user update tasks - ('/user/<userId>/tots/<tot_id>/tasks/<taskID>/edit')
-	* scoreboard - ('/tots/<tot_id>') - GET
-	* + / - scoring component - ('/tots/<totID>/tasks/<taskID>') --> GET
-	* Speed Challenge - See below...
+* Main Dashboard Components/Routes - family ids
+	* main dashboard route - ('/family/<family_Id>') --> GET
+	* + / - scoring component - ('/tasks/<taskID>') --> PUT
 
 * Task Adder/Editer
-	* assign tots route - ('/user/<userId>/tots') --> GET
 	* add task route - ('/tasks') --> POST
     * edit task route - ('/tasks/<task_id>') --> PUT 
     * delete task route - ('/tasks/<task_id>') --> Delete
-
-* Speed Challenge
-	* speed challenge dashboard - ('/user/<userId>/tots/<totID>') --> GET
-	* assign tots route - ('/user/<userId>/tots') --> GET
-	* task component - ('/tasks') --> POST
-	* submit component - /tots/<tot_id>/<task_id>' --> POST
-
-
-* Tot Mode
-	* scoreboard (from above) - (/tots/<tot_id>') - GET
-	* tot component (from above) - lists all tots & their active tasks - ('/user/<userID>/tots/tasks') --> GET
-
 
 
 
