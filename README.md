@@ -28,44 +28,44 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 ## MODELS/SCHEMAS 
 
-Family {
-	users: [User ID - ref],
-	tots: [Tot.schema],
-	taskNames: [String],
-	rewards: [String],
-	assignedTasks: [task.schema], // show on scoreboard
-	taskArchive: [task.schema], // historical
-	speedChallenges: [speedChallenge.schema]
-}
+	Family {
+		users: [User ID - ref],
+		tots: [Tot.schema],
+		taskNames: [String],
+		rewards: [String],
+		assignedTasks: [task.schema], // show on scoreboard
+		taskArchive: [task.schema], // historical
+		speedChallenges: [speedChallenge.schema]
+	}
 
-Users {
-	userId: int,
-	userName: [String], 
-	fullName: [String],
-	password: [String],
-}
+	Users {
+		userId: int,
+		userName: [String], 
+		fullName: [String],
+		password: [String],
+	}
 
-Tots {
-	name: [String],
-	image: img,
-	totID: int
-}
+	Tots {
+		name: [String],
+		image: img,
+		totID: int
+	}
 
-Task {
-	tots: tot (From above),
-	reward: reward (From above),
-	times til reward: int,
-	times so far: int,
-	date
-	taskID: 
-}
+	Task {
+		tots: tot (From above),
+		reward: reward (From above),
+		times til reward: int,
+		times so far: int,
+		date
+		taskID: 
+	}
 
-SpeedChallenge {
-	task: task (From above),
-	time: 
-	taskToBump: (id)
-	howMuch: 
-}
+	SpeedChallenge {
+		task: task (From above),
+		time: 
+		taskToBump: (id)
+		howMuch: 
+	}
 
 ## ROUTES - CRUDing 
 * Register/Login Components - Users
