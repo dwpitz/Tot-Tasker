@@ -43,15 +43,15 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 	Tots {
 		name: [String],
-		image: img,
+		imageURL: String,
 		tasks: [String]
 	}
 
-	Task {
+	Tasks {
 		tots: tot (From above),
 		reward: String,
-		times til reward: int,
-		times so far: int (0 by default),
+		coundownToCompletion: int,
+		countSoFar: int (0 by default),
 		date: Date
 	}
 
