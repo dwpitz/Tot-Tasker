@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
-
 //move this to .env at some point
-const connectionString = 'mongodb://localhost/tottasker'
+const connectionString = 'mongodb://localhost/tot-tasker'
 
 mongoose.connect(connectionString, { 
 	useNewUrlParser: true,
-	useUnifiedTopology: true
-	// create index
-	// find and modify
+	useUnifiedTopology: true,
+	useCreateIndex: true,
+    useFindAndModify: false
 })
 
 mongoose.connection.on('connected', () => {
