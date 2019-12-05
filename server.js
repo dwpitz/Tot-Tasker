@@ -20,6 +20,8 @@ app.use(express.static('public'))
 //Controllers
 const familyController = require('./controllers/family.js')
 app.use('/family', familyController)
+const totsController = require('./controllers/tots.js')
+app.use('/tots', totsController)
 
 
 

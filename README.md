@@ -59,17 +59,17 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 * Register/Login Components - Users - Change to family...
 	* register route - ('/family/register') --> POST
 	* login route - ('/family/login') --> POST
-	* logout route - ('/family/logout') --> GET
-	* tots post route - ('/family/<family_Id>/tots') --> POST
+	* logout	 route - ('/family/logout') --> GET
+	* tots post route - ('/tots/<familyId>') --> POST
 
 * Main Dashboard Components/Routes - family ids
-	* main dashboard route - ('/family/<family_Id>') --> GET
-	* + / - scoring component - ('/tasks/<taskID>') --> PUT
+	* main dashboard route - ('/family/<familyId>') --> GET
+	* + / - scoring component - ('/tasks/<familyId>') --> PUT
 
 * Task Adder/Editer
 	* add task route - ('/tasks') --> POST
-    * edit task route - ('/tasks/<task_id>') --> PUT 
-    * delete task route - ('/tasks/<task_id>') --> Delete
+    * edit task route - ('/tasks/<familyId>') --> PUT 
+    * delete task route - ('/tasks/<familyId>') --> Delete
 
 
 

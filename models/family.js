@@ -5,16 +5,15 @@ const familySchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	email: String,
-	// {
-	// 	type: String,
-	// 	required: true
-	// },
+	email: {
+		type: String,
+		required: true
+	},
 	password: {
 		type: String,
 		required: true
 	},
-	//Will be an array of Tot ids...
+	//Will be an array of Tot ids... _id
 	tots: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Tot'
@@ -26,7 +25,7 @@ const familySchema = new mongoose.Schema({
 	}], 
 	//Wondering if both of these should actually be in or ref. task model?
 	completedTasks: [{String}], //<-- OverallScoreboard and resetting scoreboard
-	taskArchive: [{String}],
+	taskArchive: [{String}], //<-- Historical
 	admin1: String,
 	admin2: String,
 	admin3: String

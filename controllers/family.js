@@ -5,6 +5,25 @@ const Task = require('../models/task');
 const Tot = require('../models/tot');
 const bcrypt = require('bcryptjs')
 
+//Family Get Routes
+//Get Tots
+//Get Tot's Tasks
+//Get Tot's Completed Tasks
+// router.get('/:id', async (req, res, next) => {
+// 	console.log(req.session);
+// 	if(req.session.loggedIn){
+// 		try {
+// 			const foundTots = await Tot.find({
+// 				tots: req.session.tots.id
+// 			})
+			
+// 		}
+// 		catch (err) {
+// 			next(err)
+// 		}
+// 	}
+// })
+
 
 //Family Login Route
 router.post('/login', async (req, res, next) => {
@@ -17,15 +36,15 @@ router.post('/login', async (req, res, next) => {
 		} else {
 			const pw = req.body.password
 			console.log(foundFamily[0]);
-			if(bcryptjs.compareSync(pw, foundFamily[0].password)) {
+			if(bcrypt.compareSync(pw, foundFamily[0].password)) {
 				req.session.loggedIn = true
 				req.session.familyName = foundFamily[0].familyName
 				req.session.familyId = foundFamily[0]._id
-				console.log(req.session,' session info')
-				res.redirect('/family/'+req.session.familyId)
+				console.log('\n This is the session INFO')
+				console.log(req.session)
+				res.send("You are logged In")
 			} else {
 				console.log('bad password');
-				res.redirect('/family/login')
 			}
 
 		}
@@ -58,7 +77,13 @@ router.post('/register', async (req, res, next) => {
 			// console.log(pw);
 			const hashedString = bcrypt.hashSync(pw, bcrypt.genSaltSync(10));
 			console.log(hashedString);
-			const createdFamily = await Family.create({familyName: req.body.familyName, password: hashedString, email: req.body.email})
+			const createdFamily = await Family.create({familyName: req.body.familyName, 
+				email: req.body.email,
+				password: hashedString,
+				admin1: req.body.admin1,
+				admin2: req.body.admin2,
+				admin3: req.body.admin3 
+			})
 			console.log('\nHere is the created family in POST /Family/Register')
 			console.log(createdFamily)
 			req.session.loggedIn = true
@@ -72,6 +97,17 @@ router.post('/register', async (req, res, next) => {
 		console.log(err)
 		// next(err)
 	}	
+})
+
+// user logout route
+router.get('/logout', (req, res) => {
+	req.session.destroy((err) => {
+		if (err) {
+			console.log(err)
+		} else {
+			res.send("You have logged out");
+		}
+	})
 })
 
 module.exports = router
