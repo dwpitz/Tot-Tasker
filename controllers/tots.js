@@ -22,6 +22,8 @@ router.post('/:familyId', async (req, res, next) => {
 			findFamily.tots.push(createTot)
 			await findFamily.save();
 			//See Updated Family <--This is basically a get route!
+			
+
 			const familyAndTots = await Family.findById(req.params.familyId).populate("tots")
 			res.json(familyAndTots)	
 			console.log(familyAndTots);
@@ -33,16 +35,5 @@ router.post('/:familyId', async (req, res, next) => {
 		res.send('You must be logged in to create a Tot')
 	}
 })
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router

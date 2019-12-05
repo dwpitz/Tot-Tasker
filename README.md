@@ -67,9 +67,11 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 	* + / - scoring component - ('/tasks/<familyId>') --> PUT
 
 * Task Adder/Editer
-	* add task route - ('/tasks') --> POST
-    * edit task route - ('/tasks/<familyId>') --> PUT 
-    * delete task route - ('/tasks/<familyId>') --> Delete
+	* add task route - ('/tasks/<totId>') --> POST
+    * update task route - ('/tasks/<familyId>') --> PUT 
+    * delete task route - ('/tasks/<familyId>') --> DELETE
+
+* Edit Tots
 
 
 

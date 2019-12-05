@@ -9,21 +9,39 @@ const bcrypt = require('bcryptjs')
 //Get Tots
 //Get Tot's Tasks
 //Get Tot's Completed Tasks
-router.get('/:id', async (req, res, next) => {
-	console.log(req.session);
+router.get('/:familyId', async (req, res, next) => {
+	console.log('hitting the route');
 	if(req.session.loggedIn){
 		try {
-			const foundTots = await Tot.find({
-				tots: req.session.tots.id
-			})
-			
+			//Find the family object w/ tots populated
+			const foundFamily = await Family
+				.findById(req.params.familyId)
+				.populate({
+					path: 'tots',
+					populate: {
+						path: 'tasks'
+					}
+				})
+			console.log(foundFamily);
+			res.json(foundFamily)
+			//Find the Tots object...
+			// const foundTots = await Family.findById(foundFamily.totId).populate('tasks')
+			// res.json(foundTots)
+			// // const totsAndTasks = await foundTots.populate('tasks')
+			// console.log(totsAndTasks);
+			// res.json(totsAndTasks)
+			// res.json(totsTasks)
+			// console.log(foundTots);			
 		}
 		catch (err) {
 			next(err)
+			res.send("this is an error")
+			console.log(err)
 		}
-	}
+	} else {
+		res.send('You must be logged in to create a Task')
+	}	
 })
-
 
 //Family Login Route
 router.post('/login', async (req, res, next) => {
@@ -52,7 +70,8 @@ router.post('/login', async (req, res, next) => {
 	}
 	catch (err) {
 		next(err)
-		res.send()
+		res.send("this is an error")
+		console.log(err)
 	}
 })
 
