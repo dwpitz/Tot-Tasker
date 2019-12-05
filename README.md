@@ -59,7 +59,7 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 * Register/Login Components - Users - Change to family...
 	* register route - ('/family/register') --> POST
 	* login route - ('/family/login') --> POST
-	* logout	 route - ('/family/logout') --> GET
+	* logout route - ('/family/logout') --> GET
 	* tots post route - ('/tots/<familyId>') --> POST
 
 * Main Dashboard Components/Routes - family ids

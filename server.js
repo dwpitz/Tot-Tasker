@@ -22,6 +22,8 @@ const familyController = require('./controllers/family.js')
 app.use('/family', familyController)
 const totsController = require('./controllers/tots.js')
 app.use('/tots', totsController)
+const tasksController = require('./controllers/tasks.js')
+app.use('/tasks', tasksController)
 
 
 

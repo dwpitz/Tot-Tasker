@@ -9,20 +9,20 @@ const bcrypt = require('bcryptjs')
 //Get Tots
 //Get Tot's Tasks
 //Get Tot's Completed Tasks
-// router.get('/:id', async (req, res, next) => {
-// 	console.log(req.session);
-// 	if(req.session.loggedIn){
-// 		try {
-// 			const foundTots = await Tot.find({
-// 				tots: req.session.tots.id
-// 			})
+router.get('/:id', async (req, res, next) => {
+	console.log(req.session);
+	if(req.session.loggedIn){
+		try {
+			const foundTots = await Tot.find({
+				tots: req.session.tots.id
+			})
 			
-// 		}
-// 		catch (err) {
-// 			next(err)
-// 		}
-// 	}
-// })
+		}
+		catch (err) {
+			next(err)
+		}
+	}
+})
 
 
 //Family Login Route
@@ -52,6 +52,7 @@ router.post('/login', async (req, res, next) => {
 	}
 	catch (err) {
 		next(err)
+		res.send()
 	}
 })
 

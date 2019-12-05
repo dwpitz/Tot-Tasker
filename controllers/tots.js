@@ -5,6 +5,8 @@ const Task = require('../models/task');
 const Tot = require('../models/tot');
 const bcrypt = require('bcryptjs')
 
+
+//This Is The Create Tots Route
 router.post('/:familyId', async (req, res, next) => {
 	// console.log(Family.ObjectId);
 	if(req.session.loggedIn){
@@ -19,7 +21,7 @@ router.post('/:familyId', async (req, res, next) => {
 			// push the tot intance created above into the family tots array
 			findFamily.tots.push(createTot)
 			await findFamily.save();
-			//See Updated Family
+			//See Updated Family <--This is basically a get route!
 			const familyAndTots = await Family.findById(req.params.familyId).populate("tots")
 			res.json(familyAndTots)	
 			console.log(familyAndTots);
@@ -28,7 +30,7 @@ router.post('/:familyId', async (req, res, next) => {
 			next(err)
 		}
 	} else {
-		res.send('you must be logged in for that')
+		res.send('You must be logged in to create a Tot')
 	}
 })
 

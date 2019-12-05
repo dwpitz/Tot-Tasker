@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
 	//Will be an array of tot ids...
+	taskName: {
+		type: String,
+		required: true
+	},
 	tot: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Tot'
@@ -18,10 +22,7 @@ const taskSchema = new mongoose.Schema({
 	 	type: Number,
 		required: true
 	},
-	date: {
-		type: Date,
-		required: true
-	}
+	date: Date //Not required at the moment
 })
 
 //Task is our collection...
