@@ -132,7 +132,8 @@ router.put('/:familyId', async (req, res, next) => {
 			const updateFamily = await Family.findByIdAndUpdate(req.params.familyId, req.body)
 			const updatedFamily = await Family.findByIdAndUpdate(req.params.familyId, req.body)
 			// console.log(updatedFamily);
-			res.send(updatedFamily)	    
+			res.send(updatedFamily)	
+			console.log(updatedFamily);    
 		} catch(err){
 			next(err)
 			res.send(err)

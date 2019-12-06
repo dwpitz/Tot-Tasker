@@ -37,4 +37,23 @@ router.post('/:familyId', async (req, res, next) => {
 	}
 })
 
+
+//Edit A Tot.This isn't working...
+router.put('/:totId', async (req, res, next) => {
+	if (req.session.loggedIn) {
+		try {
+			const updatetot = await Tot.findByIdAndUpdate(req.params.totId, req.body)
+			const updatetoted = await Tot.findByIdAndUpdate(req.params.totId, req.body)
+			// console.log(updatedFamily);
+			res.send(updatetoted)	
+			console.log(updatetoted);    
+		} catch(err){
+			next(err)
+			res.send(err)
+		}
+	} else {
+		res.send("You need to log in to update the family")
+	}
+})
+
 module.exports = router
