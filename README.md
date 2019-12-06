@@ -56,22 +56,26 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 	}
 
 ## ROUTES - CRUDing 
-* Register/Login Components - Users - Change to family...
+* Register/Login/Update Components - Family - Change to family...
 	* register route - ('/family/register') --> POST
 	* login route - ('/family/login') --> POST
 	* logout route - ('/family/logout') --> GET
-	* tots post route - ('/tots/<familyId>') --> POST
+	* family update route - ('/family/:familyId') --> PUT
 
 * Main Dashboard Components/Routes - family ids
-	* main dashboard route - ('/family/<familyId>') --> GET
+	* main dashboard route (contains tots and tasks) - ('/family/:familyId') --> GET
 	* + / - scoring component - ('/tasks/<familyId>') --> PUT - Need To Do...
 
 * Task Adder/Editer
-	* add task route - ('/tasks/<totId>') --> POST
-    * update task route - ('/tasks/<familyId>') --> PUT - Need To Do...
-    * delete task route - ('/tasks/<familyId>') --> DELETE - Need To Do...
+	* create task route - ('/tasks/:totId') --> POST
+    * update task route - ('/tasks/:taskId') --> PUT - Need To Do...
+    * delete task route - ('/tasks/:taskId') --> DELETE - Need To Do...
 
-* Edit Tots
+* Tots Crud
+	* tots create route - ('/tots/:familyId') --> POST
+	* tots update route - ('/tots/:totId') --> PUT
+	* tots delete route - ('/tots/:totId') --> DELETE
+
 
 
 

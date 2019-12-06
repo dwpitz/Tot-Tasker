@@ -38,7 +38,6 @@ router.post('/:familyId', async (req, res, next) => {
 })
 
 
-//Update A Tot.This isn't working...
 router.put('/:totId', async (req, res, next) => {
 	if (req.session.loggedIn) {
 		try {
@@ -53,6 +52,22 @@ router.put('/:totId', async (req, res, next) => {
 		}
 	} else {
 		res.send("You need to log in to update the tot")
+	}
+})
+
+//Delete A Tot
+router.delete('/:totId', async (req, res, next) => {
+	if (req.session.loggedIn){
+		try {
+			const foundTot = await Tot.find({totId: req.params.totId})
+			const deletedTot = await Tot.findByIdAndRemove(req.params.totId)
+	    	res.send(deletedTot)
+		} catch(err){
+			next(err)
+		}
+	} else {
+		res.send('You must be logged in to delete at task')
+
 	}
 })
 

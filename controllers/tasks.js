@@ -52,11 +52,11 @@ router.put('/:taskId', async (req, res, next) => {
 })
 
 //Delete A Task
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:taskId', async (req, res, next) => {
 	if (req.session.loggedIn){
 		try {
-			const foundTask = await Task.find({_id: req.params.id})
-			const deletedTask = await Task.findByIdAndRemove(req.params.id)
+			const foundTask = await Task.find({taskId: req.params.taskId})
+			const deletedTask = await Task.findByIdAndRemove(req.params.taskId)
 	    	res.send(deletedTask)
 		} catch(err){
 			next(err)
