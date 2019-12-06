@@ -50,6 +50,22 @@ router.put('/:taskId', async (req, res, next) => {
 		res.send("You need to log in to update the task")
 	}
 })
+
+//Delete A Task
+router.delete('/:id', async (req, res, next) => {
+	if (req.session.loggedIn){
+		try {
+			const foundTask = await Task.find({_id: req.params.id})
+			const deletedTask = await Task.findByIdAndRemove(req.params.id)
+	    	res.send(deletedTask)
+		} catch(err){
+			next(err)
+		}
+	} else {
+		res.send('You must be logged in to delete at task')
+
+	}
+})
 	
 
 module.exports = router
