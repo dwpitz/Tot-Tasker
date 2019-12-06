@@ -22,11 +22,12 @@ router.post('/:familyId', async (req, res, next) => {
 			findFamily.tots.push(createTot)
 			await findFamily.save();
 			//See Updated Family <--This is basically a get route!
-			
+			res.json(findFamily)
 
-			const familyAndTots = await Family.findById(req.params.familyId).populate("tots")
-			res.json(familyAndTots)	
-			console.log(familyAndTots);
+
+			// const familyAndTots = await Family.findById(req.params.familyId).populate("tots")
+			// res.json(familyAndTots)	
+			// console.log(familyAndTots);
 		}
 		catch (err) {
 			next(err)

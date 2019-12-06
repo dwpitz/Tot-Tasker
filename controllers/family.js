@@ -24,14 +24,7 @@ router.get('/:familyId', async (req, res, next) => {
 				})
 			console.log(foundFamily);
 			res.json(foundFamily)
-			//Find the Tots object...
-			// const foundTots = await Family.findById(foundFamily.totId).populate('tasks')
-			// res.json(foundTots)
-			// // const totsAndTasks = await foundTots.populate('tasks')
-			// console.log(totsAndTasks);
-			// res.json(totsAndTasks)
-			// res.json(totsTasks)
-			// console.log(foundTots);			
+		
 		}
 		catch (err) {
 			next(err)
@@ -42,6 +35,8 @@ router.get('/:familyId', async (req, res, next) => {
 		res.send('You must be logged in to create a Task')
 	}	
 })
+
+
 
 //Family Login Route
 router.post('/login', async (req, res, next) => {
@@ -128,6 +123,23 @@ router.get('/logout', (req, res) => {
 			res.send("You have logged out");
 		}
 	})
+})
+
+// update route for family
+router.put('/:familyId', async (req, res, next) => {
+	if (req.session.loggedIn) {
+		try {
+			const updateFamily = await Family.findByIdAndUpdate(req.params.familyId, req.body)
+			const updatedFamily = await Family.findByIdAndUpdate(req.params.familyId, req.body)
+			// console.log(updatedFamily);
+			res.send(updatedFamily)	    
+		} catch(err){
+			next(err)
+			res.send(err)
+		}
+	} else {
+		res.send("You need to log in to update the family")
+	}
 })
 
 module.exports = router

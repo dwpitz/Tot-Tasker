@@ -19,10 +19,10 @@ const familySchema = new mongoose.Schema({
 		ref: 'Tot'
 	}], 
 	//Will be an array of Task ids...
-	tasks: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Task'
-	}], 
+	// tasks: [{
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Task'
+	// }], 
 	//Wondering if both of these should actually be in or ref. task model?
 	completedTasks: [{String}], //<-- OverallScoreboard and resetting scoreboard
 	taskArchive: [{String}], //<-- Historical

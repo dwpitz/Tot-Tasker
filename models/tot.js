@@ -9,7 +9,7 @@ const totSchema = new mongoose.Schema({
 	//will be an array of Task Ids...
 	tasks: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Task' //<-- I am unsure if this should be plural.
+		ref: 'Task' 
 	}],
 })
 

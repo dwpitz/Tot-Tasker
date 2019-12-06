@@ -64,12 +64,12 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 * Main Dashboard Components/Routes - family ids
 	* main dashboard route - ('/family/<familyId>') --> GET
-	* + / - scoring component - ('/tasks/<familyId>') --> PUT
+	* + / - scoring component - ('/tasks/<familyId>') --> PUT - Need To Do...
 
 * Task Adder/Editer
 	* add task route - ('/tasks/<totId>') --> POST
-    * update task route - ('/tasks/<familyId>') --> PUT 
-    * delete task route - ('/tasks/<familyId>') --> DELETE
+    * update task route - ('/tasks/<familyId>') --> PUT - Need To Do...
+    * delete task route - ('/tasks/<familyId>') --> DELETE - Need To Do...
 
 * Edit Tots
 
