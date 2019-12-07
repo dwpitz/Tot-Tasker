@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
 //Move this to .env at some point
-const PORT = 3000;
+const PORT = 8000;
 const session = require('express-session')
 require('./db/db')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+var cors = require('cors')
 
 //Middleware
 app.use(session({
@@ -18,6 +19,11 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
+
+app.use(cors({
+	origin: 'http://localhost:3000',
+	credentials: true
+}))
 
 //Controllers
 const familyController = require('./controllers/family.js')

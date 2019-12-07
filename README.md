@@ -64,7 +64,6 @@ https://trello.com/b/1hGx58Q3/david-ps-capstone
 
 * Main Dashboard Components/Routes - family ids
 	* main dashboard route (contains tots and tasks) - ('/family/:familyId') --> GET
-	* + / - scoring component - ('/tasks/<familyId>') --> PUT - Need To Do...
 
 * Task Adder/Editer
 	* create task route - ('/tasks/:totId') --> POST
