@@ -52,6 +52,7 @@ router.post('/login', async (req, res, next) => {
         const foundFamily = await Family.find({
             familyName: req.body.familyName
         })
+        console.log(foundFamily, "This is FoundFamily");
         if (foundFamily.length === 0) {
             console.log('Family does not exist');
         } else {
