@@ -21,8 +21,8 @@ const taskSchema = new mongoose.Schema({
 	countSoFar: {
 	 	type: Number,
 		required: true
-	},
-	date: Date //Not required at the moment
+	}
+	// date: Date //Not required at the moment
 })
 
 //Task is our collection...

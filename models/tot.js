@@ -1,12 +1,9 @@
 const mongoose = require('mongoose')
 
 const totSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: true
-	},
-	imageURL: String,
-	//will be an array of Task Ids...
+	name: String,
+	image: String,
+	//This was required.  It is not required at the moment because of my empty submit bug.
 	tasks: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Task' 
