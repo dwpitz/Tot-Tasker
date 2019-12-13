@@ -25,7 +25,8 @@ router.post('/:totId', async (req, res, next) => {
             res.json({
                 status: 200,
                 message: 'You have created a task',
-                data: findTot
+                data: findTot,
+                createTask: createTask
             })
         } catch (err) {
             next(err)
@@ -48,7 +49,7 @@ router.post('/:totId', async (req, res, next) => {
 router.put('/:taskId', async (req, res, next) => {
     if (req.session.loggedIn) {
         try {
-            const updatetask = await Task.findByIdAndUpdate(req.params.taskId, req.body)
+            // const updatetask = await Task.findByIdAndUpdate(req.params.taskId, req.body)
             const updatedTask = await Task.findByIdAndUpdate(req.params.taskId, req.body)
             // console.log(updatedFamily);
             res.json({
@@ -70,7 +71,7 @@ router.put('/:taskId', async (req, res, next) => {
         res.json({
                 status: 401,
                 message: 'You must be logged in to update a Task.'
-        		})
+        })
     }
 })
 
