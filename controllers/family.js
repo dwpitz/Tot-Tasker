@@ -54,11 +54,12 @@ router.post('/login', async (req, res, next) => {
         })
         console.log(foundFamily, "This is FoundFamily");
         if (foundFamily.length === 0) {
-            console.log('Family does not exist');
+            req.session.message = Family does not exist;
         } else {
             const pw = req.body.password
             console.log(foundFamily[0]);
             if (bcrypt.compareSync(pw, foundFamily[0].password)) {
+                req.session.message  = '';
                 req.session.loggedIn = true
                 req.session.familyName = foundFamily[0].familyName
                 req.session.familyId = foundFamily[0]._id
@@ -70,8 +71,10 @@ router.post('/login', async (req, res, next) => {
                     message: 'You are logged in',
                     data: foundFamily
                 })
+                res.json(req.session)
             } else {
                 res.json({
+                    req.session.message = 'Username or password are incorrect. Please register if you have never used Tot Tasker';
                     status: 400,
                     message: 'Incorrect Password'
                 })
@@ -146,17 +149,35 @@ router.post('/register', async (req, res, next) => {
 
 // user logout route
 router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.log(error)
+    if (req.session) {
+    // delete session object
+        res.json(req.session);
+        req.session.destroy(function(err) {
+        if(err) {
+            return next(err);
         } else {
-            res.json({
+        res.json({
                 status: 200,
                 message: 'You have logged out of your account'
-            });
+        })
+        res.redirect('/')
         }
-    })
+        });
+    }
 })
+
+// router.get('/logout', (req, res) => {
+//   req.session.destroy(function(err){
+  
+//         if(err){
+//           // do something
+//         } else res.json({
+//                 status: 200,
+//                 message: 'You have logged out of your account'
+//         })
+//         res.redirect('/')
+//   })
+// })
 
 // update route for family
 router.put('/:familyId', async (req, res, next) => {
