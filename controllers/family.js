@@ -54,12 +54,13 @@ router.post('/login', async (req, res, next) => {
         })
         console.log(foundFamily, "This is FoundFamily");
         if (foundFamily.length === 0) {
-            req.session.message = Family does not exist;
+            console.log('Family does not exist');
+            // req.session.message = 'Family does not exist';
         } else {
             const pw = req.body.password
             console.log(foundFamily[0]);
             if (bcrypt.compareSync(pw, foundFamily[0].password)) {
-                req.session.message  = '';
+                // req.session.message  = '';
                 req.session.loggedIn = true
                 req.session.familyName = foundFamily[0].familyName
                 req.session.familyId = foundFamily[0]._id
@@ -71,13 +72,13 @@ router.post('/login', async (req, res, next) => {
                     message: 'You are logged in',
                     data: foundFamily
                 })
-                res.json(req.session)
+                // res.json(req.session)
             } else {
                 res.json({
-                    req.session.message = 'Username or password are incorrect. Please register if you have never used Tot Tasker';
+                    // req.session.message = 'Username or password are incorrect. Please register if you have never used Tot Tasker';
                     status: 400,
-                    message: 'Incorrect Password'
-                })
+                    message: 'Username or password are incorrect. Please register if you have never used Tot Tasker'
+                });
             }
         }
 
